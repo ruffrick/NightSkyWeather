@@ -37,7 +37,7 @@ public class NightSkyWeather {
             final HtmlTableBody table = page.getFirstByXPath(xPath);
             final List<HtmlTableRow> rows = table.getRows();
 
-            List<String> currentDay = new LinkedList<>();
+            final List<String> currentDay = new LinkedList<>();
             int currentDayIndex = 0;
 
             for (final HtmlTableRow row : rows.subList(1, rows.size())) {
@@ -63,7 +63,7 @@ public class NightSkyWeather {
                             default -> days.add("In " + currentDayIndex + " days the weather is " + (currentDay.isEmpty() ? "not clear" : "clear"));
                         }
                         currentDayIndex++;
-                        currentDay = new LinkedList<>();
+                        currentDay.clear();
                     }
                 }
             }
